@@ -1,9 +1,5 @@
-<h1>List of Users</h1>
+<h1>List of users</h1>
 
-<p><%=@users.count%> Users</p>
+<p><%= pluralize(@users.count, 'user') %></p>
+<ol><%= render @users %></ol>
 
-<ol>
-	<% Users.each do |user| %>
-		<li><%= user.name%>: <%=user.email%></li>
-	<% end %>
-</ol>

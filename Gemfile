@@ -8,10 +8,12 @@ gem 'rails', '4.1.0'
 gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+
 gem 'bootstrap-sass', '~> 3.2.0'
 
 group :test do
     gem 'capybara'
+    gem 'factory_girl_rails'
 end
 
 group :development, :test do
@@ -38,6 +40,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
+
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
