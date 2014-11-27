@@ -1,25 +1,32 @@
 FactoryGirl.define do
-    factory :user do
-	sequence(:name) { |i| "User #{i}" }
-	sequence(:email) { |i| "user.#{i}@example.com" }
-	password 'password'
-	password_confirmation 'password'
 
-	factory :admin do
-	    admin true
-	end
-    end
+  factory :user do
+    sequence(:name) { |i| "User #{i}" }
+	  sequence(:email) { |i| "user.#{i}@example.com" }
+	  password 'password'
+	  password_confirmation 'password'
+
+	 factory :admin do
+     sequence(:name) { |i| "Admin #{i}" }
+     admin true
+  	end
+  end
 
     factory :church do
+      user
     end
 
     factory :service do
-	church
+	    church
     end
 
     factory :ride do
+      user
+      service
     end
 
     factory :user_ride do
+      ride
+      user
     end
 end

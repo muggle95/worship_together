@@ -16,7 +16,11 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'rails_helper'
 require 'capybara/rspec'
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 RSpec.configure do |config|
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
+  config.include Capybara::RSpecMatchers
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
