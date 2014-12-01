@@ -15,10 +15,20 @@ FactoryGirl.define do
 
     factory :church do
       user
+	    transient { num_services 1 }
+
+	    after(:create) do |church, evaluator|
+	      create_list(:service, evaluator.num_services, church: church)
+	    end
     end
 
     factory :service do
 	    church
+	    transient { num_rides 1 }
+
+	    after(:create) do |service, evaluator|
+	      create_list(:ride, evaluator.num_rides, service: service)
+	    end
     end
 
     factory :ride do
