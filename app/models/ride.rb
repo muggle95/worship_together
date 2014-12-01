@@ -5,4 +5,5 @@ class Ride < ActiveRecord::Base
   has_many :users, through: :user_rides
   
   validates :user, presence: true
+  validates :service, presence: true
 end
