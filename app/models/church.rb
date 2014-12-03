@@ -6,4 +6,5 @@ class Church < ActiveRecord::Base
   accepts_nested_attributes_for :services
   
   validates :user, presence: true
+  validates :name, presence: true
 end
