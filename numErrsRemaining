@@ -1,0 +1,17 @@
+Stuff still failing (to prioritize)
+
+FEATURES
+service_pages_spec 24/24
+ride_pages_spec 18/18
+church_pages_spec 15/48
+user_pages_spec 12/33
+authorization_spec 13/20
+application_spec 4/4
+login_pages_spec 0/9?
+
+MODELS
+ride_spec 1/39
+user_spec 0/24
+service_spec 0/15
+church_spec 0/9
+user_ride_spec 0/4

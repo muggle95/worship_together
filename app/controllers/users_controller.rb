@@ -30,7 +30,18 @@ class UsersController < ApplicationController
     end
 
     def edit
+      @user = User.find(params[:id])
+      if @user.save
+        flash[:success] = "Welcome to the site, #{@user.name}"
+	      redirect_to @user
+	    else
+	      flash.now[:danger] = "Unable to create new user"
+	      render 'new'
+	    end
     end
+  
+  def destroy
+  end
 
     private
 

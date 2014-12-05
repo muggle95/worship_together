@@ -237,6 +237,7 @@ describe "Church Pages" do
 
 	describe "with valid information" do
 	    before do
+        #puts page.body
 		fill_in 'Name', with: 'New Church Name'
 		fill_in 'Web site', with: 'http://www.example.com/new'
 		fill_in 'Description', with: 'This is the NEW church description.'

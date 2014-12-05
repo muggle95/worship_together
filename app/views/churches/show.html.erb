@@ -1,0 +1,4 @@
+<h1>Profile Page for <%= @church.name %></h1>
+
+<p><%= "#{@church.name}\'s #{pluralize(@church.services.count, 'service')}" %></p>
+<ol><%= render partial: 'service', collection: @church.services %></ol> <!--needs some more code so it only lists the services that belong to this church.-->

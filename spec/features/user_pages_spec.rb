@@ -54,7 +54,7 @@ describe "User Pages" do
 	end
 
 	describe "with invalid information" do
-	    it "does not add the user to the system" do
+    it "should not add the user to the system" do
 		expect { click_button submit }.not_to change(User, :count)
 	    end
 

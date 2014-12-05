@@ -39,10 +39,10 @@ class Ride < ActiveRecord::Base
     end
   end
   
-  validate :old_enough, on: :create
+  validate :old_enough
   def old_enough
-    if(updated_at && date)
-      errors.add(:date,"business rules require the ride to be created at least a day before it validates") unless (updated_at <= date-1 || date>Date.today()-1)
+    if(created_at)
+      errors.add(:created_at,"business rules require the ride to be created at least a day before it validates") unless (created_at < Date.today())
     end
   end
   

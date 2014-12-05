@@ -50,6 +50,8 @@ FactoryGirl.define do
       leave_time Time.at(Time.now()+60*60*26) #26 hours from the time it is created
       return_time Time.at(Time.now()+60*60*29) #3 hours after the leave_time
       date Date.today()+1
+      
+      created_at Date.today()-2
     end
 
     factory :user_ride do
