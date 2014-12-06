@@ -1,4 +1,5 @@
 <li>
     <%= church.name %>
+    <%= content_tag(:a, "official web site", href: church.web_site) %>
     <%= link_to 'delete', church, method: :delete %>
 </li>

@@ -18,6 +18,7 @@ FactoryGirl.define do
 	    transient { num_services 1 }
       
       sequence(:name) { |i| "Church #{i}" }
+      sequence(:web_site) {|i| "www.church#{i}.com"}
       
 	    after(:create) do |church, evaluator|
 	      create_list(:service, evaluator.num_services, church: church)

@@ -4,26 +4,33 @@ class ChurchesController < ApplicationController
 	@church.services.build
     end
 
-    def create
-	@church = Church.new(church_params)
-	@church.user = current_user
-	if @church.save
-	    flash[:success] = "#Church created"
-	    redirect_to @church
-	else
-	    flash.now[:danger] = "Unable to create church"
-	    render 'new'
-	end
-    end
+  def create
+	  @church = Church.new(church_params)
+	  @church.user = current_user
+    if(@church.user)
+	    if (@church.save)
+	      flash[:success] = "Church created"
+	      redirect_to @church
+      else #else if (@church.save)
+	      flash.now[:danger] = "Unable to create church"
+	      render 'new'
+      end #end if (@church.save)
+    else #else if @church.user exists
+      redirect_to login_path
+    end #end if @church.user
+  end #end create
   
   def edit
     @church = Church.find(params[:id])
+    rescue
+	    flash[:danger] = "Unable to find church"
+      redirect_to churches_path
   end
   
   def update
      @church = Church.find(params[:id])
       if @church.update(church_params)
-        flash[:success] = "#Church edited"
+        flash[:success] = "Church edited"
 	      redirect_to @church
 	    else
         flash.now[:danger] = "Unable to modify church"
@@ -43,6 +50,16 @@ class ChurchesController < ApplicationController
   end
   
   def destroy
+    @church = Church.find(params[:id])
+    if(church.destroy(:id))
+      flash[:success] = "Church deleted"
+      redirect_to churches_path
+    else
+      puts "church #{:id} was found but not deleted?"
+    end
+    rescue
+	  flash[:danger] = "Unable to find church"
+    redirect_to churches_path
   end
 
     private

@@ -7,4 +7,6 @@ class Church < ActiveRecord::Base
   
   validates :user, presence: true
   validates :name, presence: true
+ # validates :id, presence: true#, numericality: {greater_than_or_equal_to: 0}
+  validates :web_site, presence: true
 end
