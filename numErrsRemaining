@@ -4,9 +4,9 @@ FEATURES
 service_pages_spec 24/24
 ride_pages_spec 18/18
 authorization_spec 13/20
-user_pages_spec 12/33
 church_pages_spec 10/48
 application_spec 4/4
+user_pages_spec 2/33
 login_pages_spec 0/9?
 
 MODELS

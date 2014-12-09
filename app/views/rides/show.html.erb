@@ -1,0 +1,19 @@
+<h1>Ride info page for Ride #<%= @ride.id %></h1>
+
+<p>Seats available: <%= @ride.seats_available %></p>
+
+<p>Service: Church <%= @ride.service.church.name %> </p>
+<p>      Start time: <%= @ride.service.start_time %></p>
+<p>      End time: <%= @ride.service.finish_time %></p>
+<p>      Day of Week: <%= @ride.service.day_of_week %></p>
+<p>      Location: <%= @ride.service.location %></p>
+
+<p>Date: <%= @ride.date %></p>
+<p>Meeting location: <%= @ride.meeting_location %></p>
+<p>Meeting time: <%= @ride.leave_time %></p>
+<p>Return time: <%= @ride.return_time %></p>
+<p>Vehicle: <%= @ride.vehicle %></p>
+
+<% if (logged_in?) %>
+<p><%= content_tag(:button, "Claim ride") %></p>
+<% end %>

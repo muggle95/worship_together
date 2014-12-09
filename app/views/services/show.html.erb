@@ -1,0 +1,10 @@
+<h1>Ride info page for Service #<%= @service.id %></h1>
+
+<p>Church: <%= @service.church.name %></p>
+<p>Start time: <%= @service.start_time %></p>
+<p>End time: <%= @service.finish_time %></p>
+<p>Day of Week: <%= @service.day_of_week %></p>
+<p>Location: <%= @service.location %></p>
+
+<p></p><p>Create a ride to this service</p>
+<%= render "rides/new" %>

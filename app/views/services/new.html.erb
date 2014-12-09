@@ -1,0 +1,8 @@
+<%= render 'shared/errors', object: @service %>
+
+<%= form_for @service do |form| %>
+    <%= render partial: 'fields', locals: { f: form } %>
+
+<%= form.submit 'Create new service' %>
+    
+<% end %>

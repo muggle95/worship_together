@@ -1,0 +1,5 @@
+<h1>Edit service</h1>
+<%= form_for @service do |form| %>
+    <%= render partial: 'fields', locals: { f: form } %>
+<%= form.submit 'Update service' %>
+<% end %>

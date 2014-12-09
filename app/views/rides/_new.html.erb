@@ -1,0 +1,10 @@
+<!--Had to separate this into a partial in order to embed it in the service view-->
+
+<%= render 'shared/errors', object: @ride %>
+
+<%= form_for @ride do |form| %>
+    <%= render partial: 'fields', locals: { f: form } %>
+
+<%= form.submit 'Create new ride' %>
+    
+<% end %>

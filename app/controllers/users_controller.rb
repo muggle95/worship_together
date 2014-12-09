@@ -25,22 +25,39 @@ class UsersController < ApplicationController
     def show
 	@user = User.find(params[:id])
     rescue
-	flash[:danger] = "Unable to find user"
+	flash.now[:danger] = "Unable to find user"
 	redirect_to users_path
     end
 
     def edit
       @user = User.find(params[:id])
-      if @user.save
-        flash[:success] = "Welcome to the site, #{@user.name}"
-	      redirect_to @user
-	    else
-	      flash.now[:danger] = "Unable to create new user"
-	      render 'new'
-	    end
+      rescue
+	      flash.now[:danger] = "Unable to find user"
+	      redirect_to users_path
     end
   
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+        flash.now[:success] = "#{@user.name}, your information has been updated"
+      redirect_to user_path(@user)
+	    else
+        flash.now[:danger] = "Unable to edit the user"
+        render 'edit'
+	    end
+    rescue
+	      flash.now[:danger] = "Unable to find user"
+	      redirect_to users_path
+  end
+  
   def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:success] = "User deleted"
+      redirect_to users_path
+    else
+      flash.now[:danger] = "User not deleted"
+    end
   end
 
     private

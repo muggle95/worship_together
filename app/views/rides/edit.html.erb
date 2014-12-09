@@ -1,0 +1,5 @@
+<h1>Edit ride</h1>
+<%= form_for @ride do |form| %>
+    <%= render partial: 'fields', locals: { f: form } %>
+<%= form.submit 'Update ride' %>
+<% end %>
