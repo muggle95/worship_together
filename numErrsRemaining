@@ -1,16 +1,16 @@
 Stuff still failing (to prioritize)
 
 FEATURES
-service_pages_spec 24/24
-ride_pages_spec 18/18
-authorization_spec 13/20
-church_pages_spec 10/48
+authorization_pages_spec 21/34
+church_pages_spec 4/48
 application_spec 4/4
+service_pages_spec 2/24
 user_pages_spec 2/33
+ride_pages_spec 0/18
 login_pages_spec 0/9?
 
 MODELS
-ride_spec 1/39
+ride_spec 0/39
 user_spec 0/24
 service_spec 0/15
 church_spec 0/9

@@ -1,4 +1,6 @@
 <li>
-    <%= user.name %>: <%= user.email %>
-    <%= link_to 'delete', user, method: :delete %>
+  <div class=<%="user#{user.id}"%> >
+    <p><%= content_tag(:a, "#{user.name}", href: user_path(user)) %>: <%= user.email %></p>
+    <%= content_tag(:a, "delete", href: user_path(user)) %>
+  </div>
 </li>

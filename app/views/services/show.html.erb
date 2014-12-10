@@ -6,5 +6,8 @@
 <p>Day of Week: <%= @service.day_of_week %></p>
 <p>Location: <%= @service.location %></p>
 
+<p><%= "#{pluralize(@service.rides.count, 'Ride')}" %></p>
+
+
 <p></p><p>Create a ride to this service</p>
 <%= render "rides/new" %>

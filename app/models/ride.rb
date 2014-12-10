@@ -14,35 +14,37 @@ class Ride < ActiveRecord::Base
   validates :leave_time, presence: true
   validates :return_time, presence: true
   
-  validate :past_leave_time, on: :create
-  def past_leave_time
-    if(leave_time)
-      errors.add(:leave_time, "the leave time has already passed") unless (leave_time > Time.now)
-    end
-  end
+  #validate :past_leave_time, on: :create
+  #def past_leave_time
+  #  if(leave_time)
+  #    errors.add(:leave_time, "the leave time has already passed") unless (Date.today || leave_time > Time.now)
+  #  end
+  #end
   validate :ride_previous_day, on: :create
   def ride_previous_day
     if(date)
       errors.add(:date, "the ride is scheduled for a day in the past") unless (date >= Date.today)
     end
   end
+  
   validate :return_before_leaving
   def return_before_leaving
     if(return_time && leave_time)
       errors.add(:return_time, "the ride cannot leave after it returns") unless (return_time > leave_time)
     end
   end
+  
   validate :enough_seats
   def enough_seats
     if(number_of_seats && seats_available)
-      errors.add(:seats_available) unless (number_of_seats>=seats_available)
+      errors.add(:seats_available,"") unless (number_of_seats>=seats_available)
     end
   end
   
-  validate :old_enough
-  def old_enough
-    if(created_at)
-      errors.add(:created_at,"business rules require the ride to be created at least a day before it validates") unless (created_at < Date.today())
+  validate :in_future, on: :create
+  def in_future
+    if(date)
+      errors.add(:date,"business rules require the ride to be created at least a day before it happens") unless (date > Date.today())
     end
   end
   

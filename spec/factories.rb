@@ -29,8 +29,8 @@ FactoryGirl.define do
 	    church
 	    transient { num_rides 1 }
 
-      start_time Time.new(8)
-      finish_time Time.new(10)
+      start_time "8 AM"
+      finish_time "10 AM"
       day_of_week "Sunday"
       location "church sanctuary"
       
@@ -48,11 +48,10 @@ FactoryGirl.define do
       meeting_location 'the spot to meet'
       vehicle 'a red car'
       
-      leave_time Time.at(Time.now()+60*60*26) #26 hours from the time it is created
-      return_time Time.at(Time.now()+60*60*29) #3 hours after the leave_time
+      leave_time "8 am"
+      return_time "10 am"
       date Date.today()+1
       
-      created_at Date.today()-2
     end
 
     factory :user_ride do

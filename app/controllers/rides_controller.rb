@@ -1,5 +1,6 @@
 class RidesController < ApplicationController
   def index
+    @service = Service.find(params[:service_id])
     order_param = (params[:order] || :Date).to_sym
 	  ordering = case order_param
       when :Date
@@ -7,15 +8,18 @@ class RidesController < ApplicationController
 	    when :Service
 		       :service_id
       end
-	  @rides = Ride.order(ordering)
+    @rides = @service.rides.order(ordering)
   end
   
   def new
-    @ride = Ride.new
+    @service = Service.find(params[:service_id])
+    @ride = @service.rides.build
   end
   
   def create
-    @ride = Ride.new(ride_params)
+    @service = Service.find(params[:service_id])
+    @ride = @service.rides.build(ride_params)
+    @ride.user = current_user
     if @ride.save
       flash[:success] = "Ride has been created"
       redirect_to @ride
@@ -28,15 +32,15 @@ class RidesController < ApplicationController
   def show
     @ride = Ride.find(params[:id])
     rescue
-      flash.now[:danger] = "Unable to find ride"
-      redirect_to rides_path
+      flash[:danger] = "Unable to find ride"
+    redirect_to root_path
   end
   
   def edit
     @ride = Ride.find(params[:id])
     rescue
-      flash.now[:danger] = "Unable to find ride"
-      redirect_to rides_path
+      flash[:danger] = "Unable to find ride"
+    redirect_to root_path
   end
   
   def update
@@ -44,10 +48,10 @@ class RidesController < ApplicationController
     if @ride.update(ride_params)
       flash.now[:success] = "The ride\'s information has been updated"
       redirect_to ride_path(@ride)
-	  else
+    else
       flash.now[:danger] = "Unable to edit the ride"
       render 'edit'
-	  end
+    end
     rescue
       flash.now[:danger] = "Unable to find the ride"
 	    redirect_to users_path
@@ -55,18 +59,20 @@ class RidesController < ApplicationController
   
   def destroy
     @ride = Ride.find(params[:id])
+    @service = @ride.service
     if @ride.destroy
       flash[:success] = "Ride deleted"
-      redirect_to rides_path
+      redirect_to @service
     else
-      flash.now[:danger] = "Ride not deleted"
+      flash[:danger] = "Ride not deleted"
+      redirect_to @ride
     end
   end
   
   private
 
-  def user_params
-    params.require(:ride).permit(:user, :service, :number_of_seats, :seats_available, :meeting_location, :vehicle, :date, :leave_time, :return_time, :picture)
+  def ride_params
+    params.require(:ride).permit(:user, :service, :number_of_seats, :seats_available, :meeting_location, :vehicle, :date, :leave_time, :return_time, :picture, :id)
   end
   
 end

@@ -1,8 +1,9 @@
 <li>
-  <ul>
-    <%= content_tag(:div, "", id: "service#{service.id}") %> 
-    <%= content_tag(:li, "Starts at: #{service.start_time}") %> 
-    <%= content_tag(:li, "Ends at: #{service.finish_time}") %>
-    <%= content_tag(:li, "Location: #{service.location}") %>
-  </ul>
+  <div class=<%="service#{service.id}"%> >
+    <ul>
+      <%=content_tag(:li, "Starts at: #{service.start_time}") %>
+      <%=content_tag(:li, "Ends at: #{service.finish_time}")%>
+      <%=content_tag(:li, "Location: #{service.location}") %>
+    </ul>
+  </div>
 </li>

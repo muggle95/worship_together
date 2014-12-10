@@ -1,5 +1,8 @@
 <li>
-    <%= church.name %>
-    <%= content_tag(:a, "official web site", href: church.web_site) %>
-    <%= link_to 'delete', church, method: :delete %>
+  <%= content_tag(:a, "#{church.name}", href: church_path(church)) %>
+  <%= content_tag(:a, "official web site", href: church.web_site) %>
+  <% if (logged_in?) %>
+  <%= button_to "Attend this church", user_path(current_user, church_id: church.id), {method: :patch} %>
+  <% end %>
+  <%= link_to 'delete', church_path(church.id), method: :delete %>
 </li>

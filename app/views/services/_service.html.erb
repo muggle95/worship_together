@@ -1,6 +1,7 @@
 <li>
   <ul>
-    <%= content_tag(:li, "Associated Church: #{service.church}") %> 
+    <%= content_tag(:li, "Associated Church: #{service.church.name}") %>
+    <%= content_tag(:li, "Day of Week: #{service.day_of_week}") %>
     <%= content_tag(:li, "Starts at: #{service.start_time}") %> 
     <%= content_tag(:li, "Ends at: #{service.finish_time}") %>
     <%= content_tag(:li, "Location: #{service.location}") %>

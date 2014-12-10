@@ -3,7 +3,6 @@
   <ul>
     <li>From: <%= content_tag(:a, ride.user.name, href: user_path(ride.user)) %></li>
   	<li>To: <%= ride.service.church.name %></li>
-	  <li>Service: <%= ride.service.location %> @ <%= ride.service.start_time %></li>
   	<li>Date: <%= ride.date %>
 	  <li><%= link_to 'Ride details', ride %></li>
   </ul>

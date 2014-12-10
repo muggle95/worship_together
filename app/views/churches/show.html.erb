@@ -1,5 +1,12 @@
 <h1>Profile Page for <%= @church.name %></h1>
 
-<p><%= "#{@church.name}\'s #{pluralize(@church.services.count, 'service')}" %></p>
 <p><%= content_tag(:a, "official web site", href: @church.web_site) %></p>
+<p>Attendees</p>
+<ol><%= render partial: 'users/user', collection: @church.users %></ol>
+<p><%= "#{@church.name}\'s #{pluralize(@church.services.count, 'Service')}" %></p>
 <ol><%= render partial: 'service', collection: @church.services %></ol>
+
+<p></p>
+  <% if (logged_in?) %>
+  <%= button_to "Attend this church", user_path(current_user, church_id: @church.id), {method: :patch} %>
+  <% end %>
